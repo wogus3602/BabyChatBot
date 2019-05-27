@@ -50,6 +50,8 @@ import java.util.Vector;
 
 public class ChatBotActivity extends AppCompatActivity {
 
+    ///
+    ////////
     private static final String TAG = ChatBotActivity.class.getSimpleName();
     private Vector<Message> chatMessages = new Vector<>();
     private ChatsAdapter chatsAdapter;
