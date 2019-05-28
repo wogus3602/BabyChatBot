@@ -19,7 +19,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.cloud.TransportOptions;
 import com.jaiselrahman.dfchatbot.adapter.ChatsAdapter;
 import com.jaiselrahman.dfchatbot.model.Cards;
 import com.jaiselrahman.dfchatbot.model.Message;
@@ -121,6 +120,7 @@ public class ChatBotActivity extends AppCompatActivity {
         send = findViewById(R.id.enter_chat1);
         send.setOnClickListener(this::sendMessageBtn);//메시지 보내기
 
+
         //보이스 입력 부분
         initvoice();// 마이크 초기화
         voiceBtn=findViewById(R.id.voicebtn);
@@ -140,6 +140,7 @@ public class ChatBotActivity extends AppCompatActivity {
 
     private void voicesend(View view) {
         //여기는 음성을 입력하고, 다 입력이 되면 아래 onActivityResult로 감
+        /*
         android.content.Intent intent=new android.content.Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
         intent.putExtra(
                 RecognizerIntent.EXTRA_LANGUAGE_MODEL,
@@ -153,6 +154,8 @@ public class ChatBotActivity extends AppCompatActivity {
         {
             Toast.makeText(this,"다시 말씀 해주세요",Toast.LENGTH_LONG).show();
         }
+
+*/
 
     }
 
@@ -172,6 +175,7 @@ public class ChatBotActivity extends AppCompatActivity {
     }
 
     protected void sendMessageBtn(View view){
+
         if (TextUtils.isEmpty(messageText.getText().toString().trim())) {
             Toast.makeText(this,"메시지를 입력해주세요",Toast.LENGTH_SHORT).show();
         }
@@ -187,8 +191,13 @@ public class ChatBotActivity extends AppCompatActivity {
             message.setMessageType(MessageType.MINE);
             chatMessages.add(message);
             currentMessage = message;
-            sendMessage(message.getText());
+
+            sendMessage(message.getText());//다일로그에 보내는 부분인듯
+
+            //Toast.makeText(this,message.getText(),Toast.LENGTH_SHORT).show();
+
             chatsAdapter.notifyDataSetChanged();
+
             messageText.setText("");
             chatList.smoothScrollToPosition(chatsAdapter.getItemCount());
         }
@@ -243,7 +252,9 @@ public class ChatBotActivity extends AppCompatActivity {
         protected void onPostExecute(DetectIntentResponse response) {
             if (response != null) {//다이얼로그플로우에서 답변이 있으면
                 if (activity.get().currentMessage != null) {
+                    //Log.d("1111111111111111111",""+ currentMessage);
                     activity.get().currentMessage.setStatus(com.jaiselrahman.dfchatbot.model.Status.SENT);
+
                 }
                 ArrayList<Quick> quickrepliesses = null;
                 Message QuickRepliesMessage = null;

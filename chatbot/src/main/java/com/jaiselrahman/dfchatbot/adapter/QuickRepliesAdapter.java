@@ -1,6 +1,7 @@
 package com.jaiselrahman.dfchatbot.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.ViewGroup;
 import android.view.View;
 
@@ -37,10 +38,17 @@ public class QuickRepliesAdapter  extends RecyclerView.Adapter<QuickRepliesAdapt
     public void onBindViewHolder(ViewHolder holder, int position) {
         final Quick quick = quicks.get(position);
 
+
         holder.title1.setText(quick.getTitle1());
         holder.title1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Intent intent = new Intent(v.getContext() , ChatBotActivity.class);
+
+                intent.putExtra("name",quick.getTitle1());
+                v.getContext().startActivity(intent);
+
 
             }
         });
@@ -52,6 +60,8 @@ public class QuickRepliesAdapter  extends RecyclerView.Adapter<QuickRepliesAdapt
 
             }
         });
+
+
     }
 
     @Override
