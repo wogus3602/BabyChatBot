@@ -1,6 +1,9 @@
 package com.jaiselrahman.dfchatbot.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.icu.util.ValueIterator;
+import android.util.Log;
 import android.view.ViewGroup;
 import android.view.View;
 
@@ -16,10 +19,14 @@ import com.jaiselrahman.dfchatbot.R;
 import com.jaiselrahman.dfchatbot.model.Quick;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class QuickRepliesAdapter  extends RecyclerView.Adapter<QuickRepliesAdapter.ViewHolder> {
     private ArrayList<Quick> quicks;
     private Context context;
+
+    private String string;
+    public ChatBotActivity chatBotActivity=new ChatBotActivity();
 
     public QuickRepliesAdapter(Context context, ArrayList<Quick> quicks) {
         this.context = context;
@@ -29,8 +36,8 @@ public class QuickRepliesAdapter  extends RecyclerView.Adapter<QuickRepliesAdapt
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(context).inflate(R.layout.quickreplies_item, parent, false);
-        return new ViewHolder(v);
+        View v1 = LayoutInflater.from(context).inflate(R.layout.quickreplies_item, parent, false);
+        return new ViewHolder(v1);
     }
 
     @Override
@@ -41,7 +48,7 @@ public class QuickRepliesAdapter  extends RecyclerView.Adapter<QuickRepliesAdapt
         holder.title1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                chatBotActivity.getsuggestion(quick.getTitle1());
             }
         });
 
@@ -49,10 +56,11 @@ public class QuickRepliesAdapter  extends RecyclerView.Adapter<QuickRepliesAdapt
         holder.title2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                chatBotActivity.getsuggestion(quick.getTitle2());
             }
         });
     }
+
 
     @Override
     public int getItemCount() {
@@ -68,5 +76,6 @@ public class QuickRepliesAdapter  extends RecyclerView.Adapter<QuickRepliesAdapt
             title1 = v.findViewById(R.id.title1);
             title2 = v.findViewById(R.id.title2);
         }
+
     }
 }
