@@ -2,6 +2,7 @@ package com.jaiselrahman.dfchatbot;
 
 import android.app.SearchManager;
 import android.content.ActivityNotFoundException;
+import android.net.sip.SipSession;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
@@ -21,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.cloud.TransportOptions;
 import com.jaiselrahman.dfchatbot.adapter.ChatsAdapter;
+import com.jaiselrahman.dfchatbot.adapter.QuickRepliesAdapter;
 import com.jaiselrahman.dfchatbot.model.Cards;
 import com.jaiselrahman.dfchatbot.model.Message;
 import com.jaiselrahman.dfchatbot.model.MessageType;
@@ -50,17 +52,15 @@ import java.util.Vector;
 
 public class ChatBotActivity extends AppCompatActivity {
 
-    ///
-    ////////
     private static final String TAG = ChatBotActivity.class.getSimpleName();
-    private Vector<Message> chatMessages = new Vector<>();
-    private ChatsAdapter chatsAdapter;
-    private RecyclerView chatList;
-    private TextView messageText;//텍스트 입력창
-    private ImageView send;//보내기 버튼튼
-   private Message currentMessage;
-    private SessionsClient sessionsClient;
-    private SessionName sessionName;
+    private static Vector<Message> chatMessages = new Vector<>();
+    private static ChatsAdapter chatsAdapter;
+    private static RecyclerView chatList;
+    private static TextView messageText;//텍스트 입력창
+    private static ImageView send;//보내기 버튼
+    private static Message currentMessage;
+    private static SessionsClient sessionsClient;
+    private static SessionName sessionName;
     private UUID uuid = UUID.randomUUID();
 
     //보이스 관련 코드
@@ -127,6 +127,7 @@ public class ChatBotActivity extends AppCompatActivity {
         initvoice();// 마이크 초기화
         voiceBtn=findViewById(R.id.voicebtn);
         voiceBtn.setOnClickListener(this::voicesend);//보이스 입력
+
     }
 
 
@@ -173,7 +174,14 @@ public class ChatBotActivity extends AppCompatActivity {
         }
     }
 
-    protected void sendMessageBtn(View view){
+    //suggestion chip 답변을 가져옴
+    public void getsuggestion(String String) {
+        messageText.setText(String);
+        sendMessageBtn(send);
+        Log.e("가져온 스트링",messageText.getText().toString());
+    }
+
+    public void sendMessageBtn(View view){
         if (TextUtils.isEmpty(messageText.getText().toString().trim())) {
             Toast.makeText(this,"메시지를 입력해주세요",Toast.LENGTH_SHORT).show();
         }
@@ -204,6 +212,7 @@ public class ChatBotActivity extends AppCompatActivity {
     private void sendMessage(String message) {
         new RequestTask(this).execute(message);
     }
+
 
 
     static class RequestTask extends AsyncTask<String, Void, DetectIntentResponse> {
@@ -288,7 +297,7 @@ public class ChatBotActivity extends AppCompatActivity {
                         msg.setText(m.getText().getText(0));
                         addMessage(msg);
                         //텍스트 메시지를 읽어줌
-                        assistant_voice.speak(msg.toString(),TextToSpeech.QUEUE_FLUSH,null);
+                        assistant_voice.speak(msg.getText(),TextToSpeech.QUEUE_FLUSH,null);
 
                     }else if (m.hasQuickReplies()){
                         super.onPostExecute(response);
