@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <string name="dummy_string">Dummy</string>
+    <string name="title_chat">채팅</string>
+    <string name="title_friend">친구</string>
+    <string name="title_more">더보기</string>
+
+
+    <string name="send">Send</string>
+
+</resources>

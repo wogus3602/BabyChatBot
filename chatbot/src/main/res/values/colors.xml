@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#0d675d</color>
+    <color name="colorPrimaryDark">#004d40</color>
+    <color name="white">@android:color/white</color>
+    <color name="chat_user_reply_background_color">#c8f0ff</color>
+    <color name="chat_company_reply_background_color">#D5D5D5</color>
+    <color name="gray">@android:color/darker_gray</color>
+    <color name="transparent">@android:color/transparent</color>
+    <color name="orange">@android:color/holo_blue_light</color>
+    <color name="background_tab_pressed">#6633B5E5</color>
+    <color name="sennd">#FFD53B</color>
+
+
+
+
+    <color name="colorAccent">#EBD98E</color>
+    <color name="colorProfile">#9edcd7</color>
+    <color name="colorProfileBackground">#53c6b5</color>
+    <color name="colorLightGray">#E0B94F</color><!--작업표시줄 색-->
+    <color name="LemonChiffon">#FFFACD</color>
+    <color name="up">#F2CB61</color><!--채팅방 라벨-->
+    <color name="ye">#FFFF00</color>
+
+</resources>

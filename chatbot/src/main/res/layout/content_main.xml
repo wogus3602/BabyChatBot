@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/chat_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background = "@color/LemonChiffon"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.jaiselrahman.dfchatbot.ChatBotActivity"
+    tools:showIn="@layout/activity_main2">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/chat_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottomlayout"
+        android:layout_marginBottom="4dp"
+        android:clipToPadding="false"
+        android:divider="@drawable/chat_divider"
+        android:longClickable="true"
+        android:paddingTop="8dp"
+        android:paddingBottom="4dp"
+        android:scrollbarStyle="outsideOverlay"
+        tools:listitem="@layout/chat_user2_item" />
+
+    <LinearLayout
+        android:id="@+id/bottomlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <EditText
+                android:id="@+id/chat_edit_text1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/input"
+                android:gravity="center_vertical"
+                android:inputType="textMultiLine"
+                android:minHeight="50dp"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:singleLine="false"
+                android:textColorHint="#c4c0bd"
+                android:textSize="18sp" />
+
+            <ImageButton
+                android:id="@+id/voicebtn"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="right"
+                android:layout_marginRight="10dp"
+                android:background="@android:drawable/presence_audio_away"
+                android:contentDescription="@string/send" />
+        </FrameLayout>
+
+        <ImageButton
+            android:id="@+id/enter_chat1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignTop="@+id/bottomlayout"
+            android:layout_gravity="bottom"
+            android:background="@drawable/input_send"
+            android:contentDescription="@string/send" />
+
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/move_to_down"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_above="@id/bottomlayout"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="18dp"
+        android:layout_marginRight="18dp"
+        android:layout_marginBottom="18dp"
+        android:alpha="0.7"
+        android:foreground="@drawable/move_to_down"
+        app:backgroundTint="@color/white" />
+
+</RelativeLayout>
