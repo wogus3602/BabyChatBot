@@ -320,11 +320,21 @@ public class ChatBotActivity extends AppCompatActivity {
                             QuickRepliesMessage.setMessageType(MessageType.QuickReplies);
                         }
                         Quick quickreplies = new Quick();
-                        quickreplies.setTitle1(m.getQuickReplies().getQuickReplies(0));
-                        quickreplies.setTitle2(m.getQuickReplies().getQuickReplies(1));
+                        int count = m.getQuickReplies().getQuickRepliesCount();
+                        Log.d("1234092183092183912",""+count);
+                            quickreplies.setTitle1(m.getQuickReplies().getQuickReplies(0));
+                            quickreplies.setTitle2(m.getQuickReplies().getQuickReplies(1));
+                            quickreplies.setCount(2);
+                        if(count==3 || count==4) {
+                            quickreplies.setTitle3(m.getQuickReplies().getQuickReplies(2));
+                            quickreplies.setCount(3);
+                        }
+                        if(count == 4){
+                            quickreplies.setTitle4(m.getQuickReplies().getQuickReplies(3));
+                            quickreplies.setCount(4);
+                        }
                         quickrepliesses.add(quickreplies);
 
-                        Log.d("1111111111111111111",""+m.getQuickReplies().getQuickReplies(0));
                     }
                 }
                 if (cardMessage != null) {

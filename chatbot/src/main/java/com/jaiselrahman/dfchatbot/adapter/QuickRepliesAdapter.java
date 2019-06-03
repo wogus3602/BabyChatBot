@@ -60,6 +60,31 @@ public class QuickRepliesAdapter  extends RecyclerView.Adapter<QuickRepliesAdapt
                 chatBotActivity.getsuggestion(quick.getTitle2());
             }
         });
+        Log.d("12312321312321",""+quick.getCount());
+
+        holder.title3.setVisibility(View.GONE);
+        holder.title4.setVisibility(View.GONE);
+        if(quick.getCount()==3 ||quick.getCount()==4 ) {
+            holder.title3.setVisibility(View.VISIBLE);
+            holder.title3.setText(quick.getTitle3());
+            holder.title3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    chatBotActivity.getsuggestion(quick.getTitle3());
+                }
+            });
+        }
+
+        if(quick.getCount() ==4){
+            holder.title4.setVisibility(View.VISIBLE);
+            holder.title4.setText(quick.getTitle4());
+            holder.title4.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    chatBotActivity.getsuggestion(quick.getTitle4());
+                }
+            });
+        }
     }
 
 
@@ -72,10 +97,15 @@ public class QuickRepliesAdapter  extends RecyclerView.Adapter<QuickRepliesAdapt
     static class ViewHolder extends RecyclerView.ViewHolder {
         private Button title1;
         private Button title2;
+        private Button title3;
+        private Button title4;
         ViewHolder(View v) {
             super(v);
-            title1 = v.findViewById(R.id.title1);
-            title2 = v.findViewById(R.id.title2);
+                title1 = v.findViewById(R.id.title1);
+                title2 = v.findViewById(R.id.title2);
+                title3 = v.findViewById(R.id.title3);
+                title4 = v.findViewById(R.id.title4);
+
         }
 
     }
