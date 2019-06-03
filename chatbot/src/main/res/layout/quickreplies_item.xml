@@ -22,4 +22,20 @@
         android:gravity="center"
         android:text="Button" />
 
+    <Button
+        android:id="@+id/title3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/radious"
+        android:layout_weight="1"
+        android:text="Button" />
+
+    <Button
+        android:id="@+id/title4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/radious"
+        android:layout_weight="1"
+        android:text="Button" />
+
 </LinearLayout>
