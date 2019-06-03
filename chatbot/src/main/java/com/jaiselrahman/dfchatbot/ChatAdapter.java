@@ -23,7 +23,6 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewholder> 
     //getItemCount, onCreateViewHolder, MyViewHolder, onBindViewholder 순으로 들어오게 된다.
     // 뷰홀더에서 초기세팅해주고 바인드뷰홀더에서 셋텍스트해주는 값이 최종적으로 화면에 출력되는 값
 
-
     @Override
     public ChatAdapter.MyViewholder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_chatlist, parent, false);//뷰 생성(아이템 레이아웃을 기반으로)
@@ -99,8 +98,5 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewholder> 
     public ChatAdapter(ArrayList<Itemlist> datalist){
         //this.activity = activity;//보여지는 액티비티
         this.datalist = datalist;//내가 처리하고자 하는 아이템들의 리스트
-
     }
-
-
 }
