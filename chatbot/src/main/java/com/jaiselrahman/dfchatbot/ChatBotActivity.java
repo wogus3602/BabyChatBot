@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.cloud.TransportOptions;
+import com.google.cloud.dialogflow.v2.StreamingDetectIntentRequest;
 import com.jaiselrahman.dfchatbot.adapter.ChatsAdapter;
 import com.jaiselrahman.dfchatbot.adapter.QuickRepliesAdapter;
 import com.jaiselrahman.dfchatbot.model.Cards;
@@ -39,6 +40,7 @@ import com.google.cloud.dialogflow.v2.SessionName;
 import com.google.cloud.dialogflow.v2.SessionsClient;
 import com.google.cloud.dialogflow.v2.SessionsSettings;
 import com.google.cloud.dialogflow.v2.TextInput;
+import com.google.cloud.dialogflow.v2.StreamingDetectIntentResponse;
 
 import java.io.IOException;
 import java.lang.ref.WeakReference;
@@ -61,6 +63,8 @@ public class ChatBotActivity extends AppCompatActivity {
     private static Message currentMessage;
     private static SessionsClient sessionsClient;
     private static SessionName sessionName;
+    private static StreamingDetectIntentResponse SDR;
+    private static StreamingDetectIntentRequest SDRe;
     private UUID uuid = UUID.randomUUID();
 
     //보이스 관련 코드
@@ -77,7 +81,6 @@ public class ChatBotActivity extends AppCompatActivity {
             query = getIntent().getStringExtra(SearchManager.QUERY);
             Log.e("Query:",query);   //query is the search word
         }
-
 
         //여기는 json파일 연결하는 코드
         try {
@@ -308,11 +311,21 @@ public class ChatBotActivity extends AppCompatActivity {
                             QuickRepliesMessage.setMessageType(MessageType.QuickReplies);
                         }
                         Quick quickreplies = new Quick();
-                        quickreplies.setTitle1(m.getQuickReplies().getQuickReplies(0));
-                        quickreplies.setTitle2(m.getQuickReplies().getQuickReplies(1));
+                        int count = m.getQuickReplies().getQuickRepliesCount();
+                        Log.d("1234092183092183912",""+count);
+                            quickreplies.setTitle1(m.getQuickReplies().getQuickReplies(0));
+                            quickreplies.setTitle2(m.getQuickReplies().getQuickReplies(1));
+                            quickreplies.setCount(2);
+                        if(count==3 || count==4) {
+                            quickreplies.setTitle3(m.getQuickReplies().getQuickReplies(2));
+                            quickreplies.setCount(3);
+                        }
+                        if(count == 4){
+                            quickreplies.setTitle4(m.getQuickReplies().getQuickReplies(3));
+                            quickreplies.setCount(4);
+                        }
                         quickrepliesses.add(quickreplies);
 
-                        Log.d("1111111111111111111",""+m.getQuickReplies().getQuickReplies(0));
                     }
                 }
                 if (cardMessage != null) {

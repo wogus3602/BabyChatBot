@@ -2,7 +2,8 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    android:layout_margin="3dp">
+    android:layout_margin="3dp"
+    android:layout_marginTop="5dp">
 
     <LinearLayout
         android:orientation="horizontal"
@@ -13,19 +14,39 @@
 
         <Button
             android:id="@+id/title1"
-            android:layout_width="100dp"
+            android:layout_width="65dp"
             android:layout_height="wrap_content"
+            android:background="@drawable/radious"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Button" />
+            />
 
         <Button
             android:id="@+id/title2"
-            android:layout_width="100dp"
+            android:layout_width="65dp"
             android:layout_height="wrap_content"
+            android:background="@drawable/radious"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Button" />
+            />
+
+        <Button
+            android:id="@+id/title3"
+            android:layout_width="65dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/radious"
+            android:layout_weight="1"
+            android:gravity="center"
+            />
+
+        <Button
+            android:id="@+id/title4"
+            android:layout_width="65dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/radious"
+            android:layout_weight="1"
+            android:gravity="center"
+            />
 
 
     </LinearLayout>
